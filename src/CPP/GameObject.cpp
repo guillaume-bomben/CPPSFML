@@ -9,8 +9,6 @@ GameObject::GameObject(sf::Vector2f position, sf::Vector2f size, const sf::Textu
 
 GameObject::~GameObject() {}
 
-void GameObject::update() {}
-
 void GameObject::draw(sf::RenderWindow& window){
     sprite.setPosition(position);
     sprite.setScale(size.x, size.y);
