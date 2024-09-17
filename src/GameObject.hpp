@@ -9,13 +9,15 @@ protected:
     sf::CircleShape circleShape;        // si cercle
     sf::Vector2f position;              // Position de l'obj
     sf::Vector2f velocity;              // Vitesse de déplacement
+    sf::Vector2f size;                  // taille
+    sf::Texture texturepath;            // path de la texture
     float rotationSpeed;                // Vitesse de rotation
 
 
 public:
     GameObject(bool isRectangle, sf::Vector2f size, sf::Vector2f position);
 
-    // Methodes pour deplacer et tourné l'objet
+    // Methodes pour deplacer et tourner l'objet
     void setVelocity(sf::Vector2f vel);
     void update(float deltaTime);       //update déplacements
     void rotate(float angle);           // Rotation

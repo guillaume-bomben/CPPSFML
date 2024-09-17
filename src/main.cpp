@@ -3,7 +3,7 @@
 
 int main()
 {
-    auto window = sf::RenderWindow{ {1920u, 1080u}, "SFML Rotation Example" };
+    auto window = sf::RenderWindow{ {1000u, 600u}, "SFML Rotation Example" };
     window.setFramerateLimit(144);
 
     // Charger l'image
