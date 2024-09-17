@@ -10,7 +10,7 @@ protected:
     sf::Texture TexturePath;
 
 public:
-    GameObject(sf::Vector2f position, sf::Vector2f size, sf::Texture TexturePath);
+    GameObject(sf::Vector2f position, sf::Vector2f size, const sf::Texture& texturePath);
     virtual ~GameObject();
     void update();
     void draw(sf::RenderWindow& window);

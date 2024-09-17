@@ -1,9 +1,9 @@
 #include "../HPP/GameObject.hpp"
 
-GameObject::GameObject(sf::Vector2f position, sf::Vector2f size, sf::Texture TexturePath) {
+GameObject::GameObject(sf::Vector2f position, sf::Vector2f size, const sf::Texture& texturePath) {
     this->position = position;
     this->size = size;
-    this->TexturePath = TexturePath;
+    this->TexturePath = texturePath;
 }
 
 GameObject::~GameObject() {}
