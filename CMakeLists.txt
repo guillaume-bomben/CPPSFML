@@ -16,7 +16,8 @@ FetchContent_MakeAvailable(SFML)
 add_executable(main 
                 src/main.cpp
                 src/CPP/GameObject.cpp
-                src/CPP/Brick.cpp)
+                src/CPP/Brick.cpp
+                src/CPP/Cannon.cpp)
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
