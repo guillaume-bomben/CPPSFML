@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "HPP/GameObject.hpp"
+#include "HPP/Brick.hpp"
 
 int main(){
     auto window = sf::RenderWindow{ {1920u, 1080u}, "SFML Rotation Example" };
@@ -7,7 +7,7 @@ int main(){
     sf::Texture texture;
     texture.loadFromFile("image/brique.png");
 
-    GameObject gameObject(sf::Vector2f(100, 100), sf::Vector2f(5, 5), texture);
+    Brick gameObject(sf::Vector2f(100, 100), texture);
 
     while (window.isOpen()){
         for (auto event = sf::Event{}; window.pollEvent(event);){
