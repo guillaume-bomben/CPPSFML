@@ -42,11 +42,14 @@ public:
     //récupérer l'objet SFML RenderWindow
     sf::RenderWindow& getRenderWindow();
 
-    // Méthode pour charger et afficher l'image de fond
+    // charger et afficher l'image de fond
     void setBackground(const std::string& path);
 
-    // Méthode pour décharger l'image de fond
+    // décharger l'image de fond
     void unloadBackground();
+
+    // boucle principale
+    void start();
 
 };
 

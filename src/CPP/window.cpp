@@ -1,4 +1,5 @@
 #include "../HPP/window.hpp"
+#include "../HPP/Menu.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -82,3 +83,21 @@ void Window::unloadBackground() {
     backgroundTexture = sf::Texture();  // Remet la texture à un état vierge
     backgroundSprite = sf::Sprite();    // Remet le sprite à un état vierge
 }
+
+
+void Window::start(){  
+    while (isOpen()) {
+        sf::Event event;
+        while (getRenderWindow().pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                close();
+            }
+        }
+
+        display();
+    }
+}
+
+
+    /*Menu m;
+    m.selectmenu(*this);*/
