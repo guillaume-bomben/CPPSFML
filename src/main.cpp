@@ -1,13 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include "HPP/Ball.hpp"
+#include "HPP/Brick.hpp"
+#include <vector>
 
 int main(){
     auto window = sf::RenderWindow{ {1920u, 1080u}, "SFML Rotation Example" };
     window.setFramerateLimit(144);
-    sf::Texture texture;
-    texture.loadFromFile("image/boule.png");
+    sf::Texture textureBall;
+    sf::Texture textureBrick;
+    std::vector<Brick> bricks;
+    textureBall.loadFromFile("image/boule.png");
+    textureBrick.loadFromFile("image/brique.png");
 
-    Ball gameObject(sf::Vector2f(100, 100), texture);
+
+    Ball ball(sf::Vector2f(100, 100), textureBall);
+    Brick brick(sf::Vector2f(200, 200), textureBrick);
+
+    bricks.push_back(brick);
 
     while (window.isOpen()){
         for (auto event = sf::Event{}; window.pollEvent(event);){
@@ -16,10 +25,14 @@ int main(){
             }
         }
 
-        gameObject.update();
+        ball.update();
+        ball.isColliding(bricks, window);
         
         window.clear();
-        gameObject.draw(window);
+        ball.draw(window);
+        for (auto& b : bricks){
+            b.draw(window);
+        }
         window.display();
 
         //gameObject.rotate(window);
