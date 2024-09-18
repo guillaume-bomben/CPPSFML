@@ -8,6 +8,7 @@ class Cannon : public GameObject{
         float angle;
 
     public:
+        Cannon();
         Cannon(sf::Vector2f position, const sf::Texture& texturePath);
         ~Cannon();
         void rotate(sf::RenderWindow& window);

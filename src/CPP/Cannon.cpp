@@ -1,6 +1,8 @@
 #include "../HPP/Cannon.hpp"
 #include <math.h>
 
+Cannon::Cannon() : GameObject(sf::Vector2f(0, 0), sf::Vector2f(1, 1), sf::Texture()) {}
+
 Cannon::Cannon(sf::Vector2f position, const sf::Texture& texturePath) : GameObject(position, sf::Vector2f(1, 1), texturePath) {
     this->angle = 0;
 }
