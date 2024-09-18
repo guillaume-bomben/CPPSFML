@@ -3,8 +3,7 @@
 GameObject::GameObject(sf::Vector2f position, sf::Vector2f size, const sf::Texture& texturePath) {
     this->position = position;
     this->size = size;
-    this->TexturePath = texturePath;
-    sprite.setTexture(this->TexturePath);
+    sprite.setTexture(texturePath);
 }
 
 GameObject::~GameObject() {}
