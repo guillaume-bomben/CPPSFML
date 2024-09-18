@@ -9,13 +9,6 @@ class Menu {
 
     public:
 
-    enum GameState {
-        selectmenu,
-        winmenu,
-        loosemenu,
-        playing
-    };
-
     Menu();
     
     //menu win

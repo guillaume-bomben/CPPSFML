@@ -86,6 +86,7 @@ void Window::unloadBackground() {
 
 
 void Window::start(){  
+    
     while (isOpen()) {
         sf::Event event;
         while (getRenderWindow().pollEvent(event)) {
@@ -93,6 +94,7 @@ void Window::start(){
                 close();
             }
         }
+
 
         display();
     }
