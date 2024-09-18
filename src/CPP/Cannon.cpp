@@ -1,5 +1,6 @@
 #include "../HPP/Cannon.hpp"
 #include <math.h>
+#include <iostream>
 
 Cannon::Cannon() : GameObject(sf::Vector2f(0, 0), sf::Vector2f(1, 1), sf::Texture()) {}
 
@@ -20,4 +21,11 @@ void Cannon::rotate(sf::RenderWindow& window) {
     sf::Vector2f direction = sf::Vector2f(mousePosition.x - cannonPositionCenter.x, mousePosition.y - cannonPositionCenter.y);
     angle = atan2(direction.y, direction.x) * 180 / M_PI;
     sprite.setRotation(angle);
+}
+
+void Cannon::launch(Ball& ball) {
+    isShooting = true;
+    sf::Vector2f direction = sf::Vector2f(cos(angle * M_PI / 180), sin(angle * M_PI / 180));
+    ball.setVelocity(direction * 5.0f);
+
 }

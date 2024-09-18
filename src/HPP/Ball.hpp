@@ -13,7 +13,7 @@ class Ball : public GameObject{
         Ball(sf::Vector2f position, const sf::Texture& texturePath);
         ~Ball();
         void update();
-        void isColliding(std::vector<Brick>& brick, sf::RenderWindow& window);
+        void isColliding(std::vector<Brick>& brick, sf::RenderWindow& window, bool& islaunch);
         void setVelocity(sf::Vector2f velocity);
 };
 

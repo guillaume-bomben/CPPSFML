@@ -12,7 +12,7 @@ void Ball::update(){
     this->sprite.setPosition(this->position);
 }
 
-void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window) {
+void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window, bool& islaunch) {
     for (auto it = bricks.begin(); it != bricks.end();) {
         if (this->sprite.getGlobalBounds().intersects(it->getSprite().getGlobalBounds())) {
             
@@ -53,9 +53,11 @@ void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window) {
     if (this->position.y < 0) {
         this->velocity.y = -this->velocity.y;  // Bounce off top window edge
     }
+    
     if (this->position.y + this->sprite.getTextureRect().height > window.getSize().y) {
-        this->velocity.y = -this->velocity.y;  // Bounce off bottom window edge
+        islaunch = false;
     }
+    
 }
 
 

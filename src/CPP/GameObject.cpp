@@ -22,6 +22,10 @@ sf::Vector2f GameObject::getPosition() {
     return position;
 }
 
+void GameObject::setPosition(sf::Vector2f position) {
+    this->position = position;
+}
+
 sf::Sprite GameObject::getSprite() {
     return sprite;
 }

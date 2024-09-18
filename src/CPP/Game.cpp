@@ -7,7 +7,6 @@ Game::Game(){
 
     cannon = Cannon(sf::Vector2f(500, 550), textureCannon);
     ball = Ball(sf::Vector2f(500, 500), textureBall);
-    ball.setVelocity(sf::Vector2f(2, -2));
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 3; j++){
             Brick brick(sf::Vector2f(0 + i * 150, 50 + j * 50), textureBrick);
@@ -20,17 +19,23 @@ Game::~Game(){}
 
 void Game::run(sf::RenderWindow& window){
 
-    ball.update();
-    ball.isColliding(bricks, window);
-    
-
     window.clear();
     cannon.draw(window);
     for(auto& brick : bricks){
         brick.draw(window);
     }
-    ball.draw(window);
+    cannon.rotate(window);
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !cannon.isShooting){
+        cannon.launch(ball);
+        ball.setPosition(cannon.getPosition());
+        ball.draw(window);
+    }
+    if (cannon.isShooting){
+        ball.update();
+        ball.isColliding(bricks, window, cannon.isShooting);
+        ball.draw(window);
+    }
     window.display();
 
-    cannon.rotate(window);
 }
