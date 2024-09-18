@@ -18,7 +18,8 @@ add_executable(main
                 src/CPP/GameObject.cpp
                 src/CPP/Brick.cpp
                 src/CPP/Cannon.cpp
-                src/CPP/Ball.cpp)
+                src/CPP/Ball.cpp
+                src/CPP/Game.cpp)
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 
