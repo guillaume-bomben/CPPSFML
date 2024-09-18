@@ -22,3 +22,7 @@ sf::Texture GameObject::getTexturePath() {
 sf::Vector2f GameObject::getPosition() {
     return position;
 }
+
+sf::Sprite GameObject::getSprite() {
+    return sprite;
+}

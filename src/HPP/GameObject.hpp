@@ -17,6 +17,7 @@ public:
     void draw(sf::RenderWindow& window);
     sf::Texture getTexturePath();
     sf::Vector2f getPosition();
+    sf::Sprite getSprite();
 };
 
 
