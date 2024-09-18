@@ -6,6 +6,7 @@
 class Brick : public GameObject{
 
     public:
+        Brick();
         Brick(sf::Vector2f position, const sf::Texture& texturePath);
         ~Brick();
 };
