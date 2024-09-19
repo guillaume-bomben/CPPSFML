@@ -3,7 +3,7 @@
 
 Ball::Ball() : GameObject(sf::Vector2f(0, 0), sf::Vector2f(1, 1), sf::Texture()){}
 
-Ball::Ball(sf::Vector2f position, const sf::Texture& texturePath) : GameObject(position, sf::Vector2f(1, 1), texturePath){}
+Ball::Ball(sf::Vector2f position, const sf::Texture& texturePath) : GameObject(position, sf::Vector2f(0.25, 0.25), texturePath){}
 
 Ball::~Ball(){}
 
@@ -47,14 +47,14 @@ void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window, boo
     }
 
     // Check window bounds for collisions
-    if (this->position.x < 0 || this->position.x + this->sprite.getTextureRect().width > window.getSize().x) {
+    if (this->position.x < 0 || this->position.x + this->sprite.getGlobalBounds().width > window.getSize().x) {
         this->velocity.x = -this->velocity.x;  // Bounce off left/right window edges
     }
     if (this->position.y < 0) {
         this->velocity.y = -this->velocity.y;  // Bounce off top window edge
     }
     
-    if (this->position.y + this->sprite.getTextureRect().height > window.getSize().y) {
+    if (this->position.y + this->sprite.getGlobalBounds().height > window.getSize().y) {
         islaunch = false;
     }
     
