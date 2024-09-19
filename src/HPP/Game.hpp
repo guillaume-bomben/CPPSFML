@@ -4,6 +4,10 @@
 #include "Brick.hpp"
 #include "Ball.hpp"
 #include "Cannon.hpp"
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
 
 
 class Game{
@@ -16,9 +20,11 @@ class Game{
         Ball ball;
 
     public:
-        Game();
+        Game(std::string filename);
         ~Game();
         void run(sf::RenderWindow& window);
+        bool Win();
+        std::vector<std::vector<int>> loadMatrixFromFile(const std::string& filename);
 };
 
 #endif
