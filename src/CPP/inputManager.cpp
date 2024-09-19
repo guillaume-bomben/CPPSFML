@@ -1,4 +1,4 @@
-#include "InputManager.hpp"
+#include "../HPP/InputManager.hpp"
 
 // Associer des événements clavier à des fonctions
 void InputManager::bindKey(sf::Keyboard::Key key, std::function<void()> func) {
@@ -12,5 +12,9 @@ void InputManager::bindMouseButton(sf::Mouse::Button button, std::function<void(
 
 // Appeler les fonctions si les touches ou boutons sont pressés
 void InputManager::handleInput() {
-    // Méthode à définir plus tard
+    for (const auto& [key, callback] : keyCallbacks) {
+        if (sf::Keyboard::isKeyPressed(key)) {
+            callback();  // Appel de la fonction associée à la touche
+        }
+    }
 }

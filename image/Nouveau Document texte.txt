@@ -1,0 +1,54 @@
+Calyrex-Shadow  
+Ability: As One (Spectrier)  
+Tera Type: Psychic  
+EVs: 252 HP / 4 SpD / 252 Spe  
+- Metronome  
+- Agility  
+- Baton Pass  
+- Calm Mind  
+
+Annihilape  
+Ability: Vital Spirit  
+Tera Type: Fighting  
+EVs: 252 HP / 4 Atk / 252 Spe  
+- Metronome  
+- Bulk Up  
+- Curse  
+- Encore  
+
+Mewtwo  
+Ability: Pressure  
+Tera Type: Psychic  
+EVs: 252 HP / 4 Atk / 252 Spe  
+- Metronome  
+- Agility  
+- Bulk Up  
+- Calm Mind  
+
+Dragonite  
+Ability: Inner Focus  
+Tera Type: Dragon  
+EVs: 252 HP / 4 Atk / 252 Spe  
+- Metronome  
+- Agility  
+- Dragon Dance  
+- Haze  
+
+Blissey (F)  
+Ability: Natural Cure  
+Tera Type: Normal  
+EVs: 252 HP / 4 Atk / 252 Spe  
+- Metronome  
+- Calm Mind  
+- Heal Bell  
+- Healing Wish  
+
+Weavile  
+Ability: Pressure  
+Tera Type: Dark  
+EVs: 252 HP / 4 Atk / 252 Spe  
+- Metronome  
+- Agility  
+- Avalanche  
+- Calm Mind  
+

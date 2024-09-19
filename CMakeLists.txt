@@ -17,8 +17,9 @@ add_executable(main
                 src/main.cpp
                 src/CPP/GameObject.cpp
                 src/CPP/Brick.cpp
-                src/cpp/window.cpp
-                src/cpp/menu.cpp)
+                src/CPP/window.cpp
+                src/CPP/menu.cpp
+                src/CPP/InputManager.cpp)
 target_link_libraries(main PRIVATE sfml-graphics)
 target_compile_features(main PRIVATE cxx_std_17)
 

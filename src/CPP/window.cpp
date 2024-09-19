@@ -87,6 +87,8 @@ void Window::unloadBackground() {
 
 void Window::start(){  
     
+    Menu m;
+
     while (isOpen()) {
         sf::Event event;
         while (getRenderWindow().pollEvent(event)) {
@@ -94,9 +96,19 @@ void Window::start(){
                 close();
             }
         }
+        m.selectmenu(*this);
+
+        //game
+
+        //if game = win
+        m.winmenu(*this);
+
+        //if game = loose
+        m.loosemenu(*this);
 
 
-        display();
+
+
     }
 }
 
