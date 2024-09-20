@@ -12,6 +12,7 @@
 
 class Game{
     private:
+        std::vector<std::vector<int>> matrix;
         sf::Texture textureCannon;
         sf::Texture textureBall;    
         sf::Texture textureBrick;
@@ -25,6 +26,7 @@ class Game{
         void run(sf::RenderWindow& window);
         bool Win();
         std::vector<std::vector<int>> loadMatrixFromFile(const std::string& filename);
+        void loadMatrix(const std::string& filename);
 };
 
 #endif

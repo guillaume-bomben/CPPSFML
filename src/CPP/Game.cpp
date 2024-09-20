@@ -8,7 +8,7 @@ Game::Game(std::string filename){
     cannon = Cannon(sf::Vector2f(500, 550), textureCannon);
     ball = Ball(sf::Vector2f(500, 500), textureBall);
 
-    std::vector<std::vector<int>> matrix = loadMatrixFromFile(filename);
+    matrix = loadMatrixFromFile(filename);
 
     for (int i = 0; i < matrix.size(); i++) {
         for (int j = 0; j < matrix[i].size(); j++) {
@@ -72,4 +72,18 @@ std::vector<std::vector<int>> Game::loadMatrixFromFile(const std::string& filena
     }
     
     return matrix;
+}
+
+
+void Game::loadMatrix(const std::string& filename){
+    bricks.clear();
+    matrix = loadMatrixFromFile(filename);
+    for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < matrix[i].size(); j++) {
+            if (matrix[i][j] == 1) {
+                Brick brick(sf::Vector2f(10 + i * 75, 10 + j * 25), textureBrick);
+                bricks.push_back(brick);
+            }
+        }
+    }
 }
