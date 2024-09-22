@@ -4,53 +4,54 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+// Class representing a game window
 class Window {
 private:
-    sf::RenderWindow win;    // Fenêtre SFML
-    sf::VideoMode videoMode;    // dimensions de la fenêtre
-    std::string title;          // Titre de la fenêtre
-    unsigned int frameRate;     // Frame rate (par défaut 144)
-    std::string backgroundPath; // Chemin de l'image de fond
-    sf::Texture backgroundTexture; // Texture de l'image de fond
-    sf::Sprite backgroundSprite;   // Sprite pour l'image de fond
+    sf::RenderWindow win;    // SFML window
+    sf::VideoMode videoMode; // Window dimensions
+    std::string title;       // Window title
+    unsigned int frameRate;  // Frame rate (default 144)
+    std::string backgroundPath; // Path to the background image
+    sf::Texture backgroundTexture; // Texture for the background image
+    sf::Sprite backgroundSprite;   // Sprite for the background image
 
 public:
-    // Constructeur par défaut
+    // Default constructor
+    // Initializes the window with a title, width, height, and frame rate
     Window(const std::string& title = "Game Window", unsigned int width = 1000, unsigned int height = 600, unsigned int frameRate = 144);
 
-    //initialiser la fenêtre
+    // Creates the window with the specified parameters
     void create();
 
-    //vérifier si la fenêtre est ouverte
+    // Checks if the window is open
     bool isOpen() const;
 
-    //fermer la fenêtre
+    // Closes the window
     void close();
 
-    //afficher des messages d'erreur
+    // Displays error messages
     void showError(const std::string& errorMessage) const;
 
-    // obtenir les dimensions de la fenêtre
+    // Gets the window dimensions
     sf::Vector2u getWindowSize() const;
 
-    //obtenir le frame rate
+    // Gets the frame rate
     unsigned int getFrameRate() const;
 
-    //afficher le contenu dans la fenêtre
+    // Displays the content in the window
     void display();
 
-    //récupérer l'objet SFML RenderWindow
+    // Retrieves the SFML RenderWindow object
     sf::RenderWindow& getRenderWindow();
 
-    // charger et afficher l'image de fond
+    // Loads and displays the background image
     void setBackground(const std::string& path);
 
-    // décharger l'image de fond
+    // Unloads the background image
     void unloadBackground();
 
-    // boucle principale
+    // Main loop of the window
     void start();
-
 };
 
 #endif

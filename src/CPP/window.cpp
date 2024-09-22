@@ -4,109 +4,111 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-// Constructeur : initialise la fenêtre
+// Constructor: initializes the window
 Window::Window(const std::string& title, unsigned int width, unsigned int height, unsigned int frameRate) 
-    : title(title), videoMode(width, height), frameRate(frameRate), backgroundPath(""){
+    : title(title), videoMode(width, height), frameRate(frameRate), backgroundPath("") {
         create();
 }
 
-// Méthode pour initialiser la fenêtre
+// Method to initialize the window
 void Window::create() {
-    // Crée une fenêtre
+    // Create a window
     win.create(videoMode, title);
     
-    // Fixer les fps
+    // Set the frame rate limit
     win.setFramerateLimit(frameRate);
 }
 
-//vérifier si la fenêtre est ouverte
+// Check if the window is open
 bool Window::isOpen() const {
     return win.isOpen();
 }
 
-// fermer la fenêtre
+// Close the window
 void Window::close() {
     win.close();
 }
 
-// afficher des messages d'erreur
+// Display error messages
 void Window::showError(const std::string& errorMessage) const {
     std::cerr << "Error: " << errorMessage << std::endl;
 }
 
-// obtenir les dimensions de la fenêtre
+// Get the dimensions of the window
 sf::Vector2u Window::getWindowSize() const {
     return win.getSize();
-
 }
 
-// obtenir le frame rate
+// Get the frame rate
 unsigned int Window::getFrameRate() const {
     return frameRate;
 }
 
-// afficher le contenu dans la fenêtre
+// Display the content in the window
 void Window::display() {
     win.clear();
     win.draw(backgroundSprite);
     win.display();
 }
 
-// récupérer l'objet SFML RenderWindow
+// Retrieve the SFML RenderWindow object
 sf::RenderWindow& Window::getRenderWindow() {
     return win;
 }
 
-// Méthode pour charger et afficher l'image de fond
+// Method to load and display the background image
 void Window::setBackground(const std::string& path) {
     unloadBackground();
     backgroundPath = path;
 
-    // Charger la texture de l'image de fond
+    // Load the texture of the background image
     if (!backgroundTexture.loadFromFile(backgroundPath)) {
         showError("Failed to load background image from path: " + backgroundPath);
         return;
     }
 
-    // Configurer le sprite avec la texture chargée
+    // Set up the sprite with the loaded texture
     backgroundSprite.setTexture(backgroundTexture);
 
-    // Redimensionner le sprite pour couvrir toute la fenêtre
+    // Resize the sprite to cover the entire window
     backgroundSprite.setScale(
         static_cast<float>(videoMode.width) / backgroundTexture.getSize().x,
         static_cast<float>(videoMode.height) / backgroundTexture.getSize().y
     );
 }
 
-// Méthode pour décharger l'image de fond
+// Method to unload the background image
 void Window::unloadBackground() {
-    // Réinitialiser la texture et le sprite de fond
-    backgroundTexture = sf::Texture();  // Remet la texture à un état vierge
-    backgroundSprite = sf::Sprite();    // Remet le sprite à un état vierge
+    // Reset the background texture and sprite
+    backgroundTexture = sf::Texture();  // Reset the texture to a blank state
+    backgroundSprite = sf::Sprite();    // Reset the sprite to a blank state
 }
 
-
-void Window::start(){  
-    Game game = Game("Level/Level test.txt");
-    Menu m;
-    std::string state = "menu";
+// Start the main loop of the window
+void Window::start() {  
+    Game game = Game("Level/Level test.txt");  // Initialize the game with a level file
+    Menu m;  // Initialize the menu
+    std::string state = "menu";  // Set the initial state to "menu"
     
+    // Main loop: runs while the window is open
     while (isOpen()) {
         sf::Event event;
+        // Poll events
         while (getRenderWindow().pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                close();
+                close();  // Close the window if the close event is triggered
             }
         }
-        if (state == "menu"){
-            m.selectmenu(*this, state);
+        // Handle different states
+        if (state == "menu") {
+            m.selectmenu(*this, state);  // Display the menu
         }
-        else if (state == "game"){
-            if (!game.Win()){
-                game.run(win);
+        else if (state == "game") {
+            if (!game.Win()) {
+                game.run(win);  // Run the game if not won
             }
-            else{
-                m.winmenu(*this, state, game);
+            else {
+                m.winmenu(*this, state, game);  // Display the win menu if the game is won
             }
         }
     }

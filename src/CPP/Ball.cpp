@@ -1,18 +1,23 @@
 #include "../HPP/Ball.hpp"
 
+// Default constructor initializing the ball with default position and velocity
+Ball::Ball() : GameObject(sf::Vector2f(0, 0), sf::Vector2f(1, 1), sf::Texture()) {}
 
-Ball::Ball() : GameObject(sf::Vector2f(0, 0), sf::Vector2f(1, 1), sf::Texture()){}
+// Parameterized constructor initializing the ball with given position and texture
+Ball::Ball(sf::Vector2f position, const sf::Texture& texturePath) : GameObject(position, sf::Vector2f(0.25, 0.25), texturePath) {}
 
-Ball::Ball(sf::Vector2f position, const sf::Texture& texturePath) : GameObject(position, sf::Vector2f(0.25, 0.25), texturePath){}
+// Destructor
+Ball::~Ball() {}
 
-Ball::~Ball(){}
-
-void Ball::update(){
-    this->position += this->velocity;
-    this->sprite.setPosition(this->position);
+// Update the ball's position based on its velocity
+void Ball::update() {
+    this->position += this->velocity;  // Update position
+    this->sprite.setPosition(this->position);  // Update sprite position
 }
 
+// Check for collisions with bricks and window bounds
 void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window, bool& islaunch) {
+    // Iterate through each brick to check for collisions
     for (auto it = bricks.begin(); it != bricks.end();) {
         if (this->sprite.getGlobalBounds().intersects(it->getSprite().getGlobalBounds())) {
             
@@ -39,10 +44,10 @@ void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window, boo
                 this->velocity.y = -this->velocity.y;  // Vertical collision
             }
 
-            // Erase the brick
+            // Erase the brick from the vector
             it = bricks.erase(it);
         } else {
-            ++it;
+            ++it;  // Move to the next brick
         }
     }
 
@@ -54,13 +59,13 @@ void Ball::isColliding(std::vector<Brick>& bricks, sf::RenderWindow& window, boo
         this->velocity.y = -this->velocity.y;  // Bounce off top window edge
     }
     
+    // If the ball hits the bottom window edge, stop the launch
     if (this->position.y + this->sprite.getGlobalBounds().height > window.getSize().y) {
         islaunch = false;
     }
-    
 }
 
-
-void Ball::setVelocity(sf::Vector2f velocity){
+// Set the ball's velocity
+void Ball::setVelocity(sf::Vector2f velocity) {
     this->velocity = velocity;
 }
